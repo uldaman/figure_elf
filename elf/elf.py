@@ -18,8 +18,7 @@ def find_pics(images, region=None, precision=0.9, mask=None):
     edged = cv2.cvtColor(np.array(ImageGrab.grab(region)), cv2.COLOR_RGB2GRAY)
     if mask is None:
         return map(lambda image: __match(edged, image, precision), images)
-    else:
-        return map(lambda image: __match_by_mask(edged, image, precision, mask), images)
+    return map(lambda image: __match_by_mask(edged, image, precision, mask), images)
 
 
 def find_pic(image, region=None, precision=0.9, mask=None):
@@ -37,8 +36,7 @@ def find_pic(image, region=None, precision=0.9, mask=None):
     edged = cv2.cvtColor(np.array(ImageGrab.grab(region)), cv2.COLOR_RGB2BGR)
     if mask is None:
         return __match(edged, image, precision)
-    else:
-        return __match_by_mask(edged, image, precision, mask)
+    return __match_by_mask(edged, image, precision, mask)
 
 
 def __match(edged, image, precision):
@@ -57,7 +55,6 @@ def __match_by_mask(edged, image, precision, mask):
 
 def __best_point(locations, precision):
     _, max_val, _, max_loc = cv2.minMaxLoc(locations)
-    print(max_val)
     if max_val < precision:
         return None
     return max_loc
