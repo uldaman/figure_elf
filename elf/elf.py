@@ -34,7 +34,7 @@ def find_pic(image, region=None, precision=0.9, mask=None):
 
     rtype: tupe(x, y), if don't found return None
     """
-    edged = cv2.cvtColor(np.array(ImageGrab.grab(region)), cv2.COLOR_RGB2GRAY)
+    edged = cv2.cvtColor(np.array(ImageGrab.grab(region)), cv2.COLOR_RGB2BGR)
     if mask is None:
         return __match(edged, image, precision)
     else:
@@ -42,22 +42,22 @@ def find_pic(image, region=None, precision=0.9, mask=None):
 
 
 def __match(edged, image, precision):
-    template = cv2.imread(image, cv2.IMREAD_GRAYSCALE)
+    template = cv2.imread(image, cv2.IMREAD_COLOR)
     locations = cv2.matchTemplate(edged, template, cv2.TM_CCOEFF_NORMED)
     return __best_point(locations, precision)
 
 
 def __match_by_mask(edged, image, precision, mask):
     template = cv2.imread(image, cv2.IMREAD_COLOR)
-    mask = (template[:, :, 0] != mask[0]) & (template[:, :, 1] != mask[1]) & (template[:, :, 2] != mask[2])
+    mask = (template[:, :, ] != mask)
     mask = mask.astype(np.uint8)
-    template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
     locations = cv2.matchTemplate(edged, template, cv2.TM_CCORR_NORMED, mask=mask)
     return __best_point(locations, precision)
 
 
 def __best_point(locations, precision):
     _, max_val, _, max_loc = cv2.minMaxLoc(locations)
+    print(max_val)
     if max_val < precision:
         return None
     return max_loc
