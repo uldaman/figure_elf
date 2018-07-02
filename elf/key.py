@@ -24,18 +24,18 @@ def hotkey(control, key):
     dm.KeyUpChar(control)
 
 
-import time
+# import time
 
-while True:
-    time.sleep(2)
+# while True:
+#     time.sleep(2)
 
-    key_down('w')
-    time.sleep(5)
-    key_up('w')
+#     key_down('w')
+#     time.sleep(5)
+#     key_up('w')
 
-    key_down('s')
-    time.sleep(5)
-    key_up('s')
+#     key_down('s')
+#     time.sleep(5)
+#     key_up('s')
 
 
 """KEYBOARD_KEYS:

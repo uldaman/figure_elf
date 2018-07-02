@@ -46,4 +46,6 @@ region = Region(965, 985, 243, 47)
 游龙盘打.successor = 升龙拳
 升龙拳.successor = 炼火拳
 
-游龙盘打.cast(region)
+
+def cast():
+    游龙盘打.cast(region)
