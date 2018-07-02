@@ -8,8 +8,13 @@ class Region(object):
         self.edged = ImageGrab.grab((x, y, x + wight, y + heigh))
 
     def match(self, pixel):
-        """误差在 100 像素内
+        """误差在 25 像素内
         """
-        return abs(
-            sum(self.edged.getpixel(pixel.xy)) - sum(pixel.rgb)
-        ) <= 100
+        rgb = self.edged.getpixel(pixel.xy)
+        return all(
+            (  # 生成一个迭代器
+                abs(rgb[0] - pixel.rgb[0]) <= 25,
+                abs(rgb[1] - pixel.rgb[1]) <= 25,
+                abs(rgb[2] - pixel.rgb[2]) <= 25
+            )
+        )

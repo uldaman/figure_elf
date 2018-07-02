@@ -5,11 +5,10 @@ from .macro import cast
 
 def onKeyboardEvent(event):
     # 监听键盘事件
-    # if event.WindowName.startswith("逆水寒"):
-    if event.Key == 'Q':
-        cast()
-        print("----------")
-        return False
+    if event.WindowName.startswith("逆水寒"):
+        if event.Key == 'Q':
+            cast()
+            return False
     return True
 
 
