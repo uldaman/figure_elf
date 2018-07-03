@@ -1,5 +1,5 @@
-from .测试 import 测试
 from .冲劲寸拳 import 冲劲寸拳
+from .群攻 import 群攻
 
 
 def key_up_macro(key):
@@ -11,7 +11,7 @@ def key_down_macro(key):
 
 
 macro_up = {
-    "Q": lambda: 测试.execution()
+    "Q": lambda: 群攻.execution()
 }
 
 

@@ -8,7 +8,7 @@ from .script.macro import (
 
 def on_key_up_event(event):
     if event.WindowName.startswith("逆水寒"):
-        key_up_macro(event.Key)
+        key_up_macro(event.Key)  # 需要优化成按住一直触发
     return True
 
 

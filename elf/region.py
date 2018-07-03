@@ -51,3 +51,6 @@ class RegionImageByMask(object):
     def match(self, template, mask, precision=0.9):
         locations = cv2.matchTemplate(self.edged, template, cv2.TM_CCORR_NORMED, mask=mask)
         return best_point(locations, precision)
+
+
+# ImageGrab.grab((965, 985, 965 + 243, 985 + 47)).save(r"C:\Users\HanXiao\Desktop\1.bmp")
