@@ -1,24 +1,20 @@
 import pyHook
 import pythoncom
 from .script.macro import (
-    match_key_up_func,
-    match_key_down_func,
+    key_up_macro,
+    key_down_macro,
 )
 
 
 def on_key_up_event(event):
     if event.WindowName.startswith("逆水寒"):
-        func = match_key_up_func(event.Key)
-        if func:
-            func()
+        key_up_macro(event.Key)
     return True
 
 
 def on_key_down_event(event):
     if event.WindowName.startswith("逆水寒"):
-        func = match_key_down_func(event.Key)
-        if func:
-            func()
+        key_down_macro(event.Key)
     return True
 
 

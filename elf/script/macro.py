@@ -2,12 +2,12 @@ from .测试 import 测试
 from .冲劲寸拳 import 冲劲寸拳
 
 
-def match_key_up_func(key):
-    return macro_up.get(key, None)
+def key_up_macro(key):
+    macro_up.get(key, lambda: None)()
 
 
-def match_key_down_func(key):
-    return macro_down.get(key, None)
+def key_down_macro(key):
+    macro_down.get(key, lambda: None)()
 
 
 macro_up = {
