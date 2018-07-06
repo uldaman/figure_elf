@@ -1,25 +1,13 @@
-import pyHook
-import pythoncom
-from .script.macro import (
-    key_up_macro,
-    key_down_macro,
-)
-
-
-def on_key_up_event(event):
-    if event.WindowName.startswith("逆水寒"):
-        key_up_macro(event.Key)  # 需要优化成按住一直触发
-    return True
+from .script import get_key_handler
 
 
 def on_key_down_event(event):
     if event.WindowName.startswith("逆水寒"):
-        key_down_macro(event.Key)
+        get_key_handler(event.Key)(True)
     return True
 
 
-hookMgr = pyHook.HookManager()
-hookMgr.KeyUp = on_key_up_event
-hookMgr.KeyDown = on_key_down_event
-hookMgr.HookKeyboard()
-pythoncom.PumpMessages()
+def on_key_up_event(event):
+    if event.WindowName.startswith("逆水寒"):
+        get_key_handler(event.Key)(False)
+    return True
