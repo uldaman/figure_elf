@@ -10,32 +10,6 @@ def best_point(locations, precision):
     return max_loc
 
 
-class RegionPixel(object):
-    """绝对像素
-    """
-
-    def __init__(self, x, y, wight, heigh):
-        super(RegionPixel, self).__init__()
-        self.edged = ImageGrab.grab((x, y, x + wight, y + heigh))
-        self.boundary = (wight, heigh)
-
-    def match(self, pixels):
-        """误差在 25 像素内
-        """
-        def __match(pixel):
-            if pixel.xy[0] > self.boundary[0] or pixel.xy[1] > self.boundary[1]:
-                return False
-            rgb = self.edged.getpixel(pixel.xy)
-            return all(
-                (  # 生成一个迭代器，有短路效应
-                    abs(rgb[0] - pixel.rgb[0]) <= 25,
-                    abs(rgb[1] - pixel.rgb[1]) <= 25,
-                    abs(rgb[2] - pixel.rgb[2]) <= 25
-                )
-            )
-        return all(map(__match, pixels))
-
-
 class RegionRelativePixel(object):
     """相对像素
     """
@@ -91,4 +65,4 @@ class RegionImageByMask(object):
         return best_point(locations, precision)
 
 
-# ImageGrab.grab((7, 611, 7 + 80, 611 + 80)).save(r"C:\Users\HanXiao\Desktop\1.bmp")
+# ImageGrab.grab((815, 985, 815 + 392, 985 + 47)).save(r"C:\Users\HanXiao\Desktop\1.bmp")
