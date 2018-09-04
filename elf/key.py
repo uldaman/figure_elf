@@ -24,20 +24,6 @@ def hotkey(control, key):
     dm.KeyUpChar(control)
 
 
-# import time
-
-# while True:
-#     time.sleep(2)
-
-#     key_down('w')
-#     time.sleep(5)
-#     key_up('w')
-
-#     key_down('s')
-#     time.sleep(5)
-#     key_up('s')
-
-
 """KEYBOARD_KEYS:
 
 ['\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&', "'", '(',

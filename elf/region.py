@@ -27,8 +27,8 @@ class RegionRelativePixel(object):
                 """像素匹配
                 """
                 # np.array 转换后与笛卡尔（x，y）坐标相反，即 (y,x) = (x,y)
-                x = pixel.xy[0] + first[1]
-                y = pixel.xy[1] + first[0]
+                x = first[1] + pixel.xy[0]
+                y = first[0] + pixel.xy[1]
                 if x > self.boundary[0] or y > self.boundary[1]:
                     return False
                 return all(
@@ -65,4 +65,11 @@ class RegionImageByMask(object):
         return best_point(locations, precision)
 
 
-# ImageGrab.grab((815, 985, 815 + 392, 985 + 47)).save(r"C:\Users\HanXiao\Desktop\1.bmp")
+# ImageGrab.grab((1011, 985, 1015 + 96, 985 + 47)).save(r"C:\Users\HanXiao\Desktop\q.bmp")
+
+# import time
+# i = 100000
+# while True:
+#     time.sleep(10)
+#     ImageGrab.grab((793, 943, 793 + 66, 943 + 66)).save(r"C:\Users\HanXiao\Desktop\{}.bmp".format(i))
+#     i = i + 1
